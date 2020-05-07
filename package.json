@@ -1,0 +1,24 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "Aplicación de consola para llevar una lista de tareas. Realizada con NodeJS.",
+  "main": "app.js",
+  "scripts": {
+  },
+  "keywords": [
+    "To do list",
+    "Node",
+    "Terminal"
+  ],
+  "author": "Pat Ugarte",
+  "license": "MIT",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PatUgarte/To-Do-List-Node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PatUgarte/To-Do-List-Node/issues"
+  },
+  "homepage": "https://github.com/PatUgarte/To-Do-List-Node#readme"
+}
