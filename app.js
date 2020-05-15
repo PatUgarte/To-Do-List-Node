@@ -1,14 +1,4 @@
-const fs = require('fs');
 const tasks = require("./tasks");
-
-if (!fs.existsSync(tasks.file)) {
-    try {
-        fs.appendFileSync(jsonPath, '[]');
-        console.log(` >>>\tCreado un nuevo archivo de tareas.json vacío\t<<< `);
-    } catch (err) {
-        console.error(err);
-    }
-}
 
 const action = process.argv[2];
 const firstValue = process.argv[3];

@@ -27,10 +27,16 @@ const tasks = {
 
 module.exports = tasks;
 
-function readJSON() {
+function readJSON(path) {
     try {
-        let string = fs.readFileSync(jsonPath, { encoding: "utf-8" });
+        if (!fs.existsSync(path)) {
+            fs.appendFileSync(path, '[]');
+            console.log(` >>>\tCreado un nuevo archivo de tareas.json vacío\t<<< `);
+        }
+
+        let string = fs.readFileSync(path, { encoding: "utf-8" });
         return JSON.parse(string);
+
     } catch (error) {
         console.error(error);
     }
