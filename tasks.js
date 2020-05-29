@@ -15,17 +15,33 @@ const tasks = {
     },
 
     search: (query, by = "titulo") => {
-        foundTasks = searchTask(query, by);
+        let foundTasks = searchTask(query, by);
         if (foundTasks) {
             console.log(`RESULTADOS DE LA BÚSQUEDA DE "${capitalize(by)}: ${query}" ES:`);
             printOutput(foundTasks);
         }
     },
 
-    delete: null,
+    delete: (query) => {
+        let foundTasks = searchTask(query, "titulo");
+
+        if (foundTasks.length === 0) {
+            console.log(`No se han hayado tarea relacionadas a la búsqueda "${query}".`);
+            return;
+        }
+
+        if (foundTasks.length === 1) {
+            deleteTask(foundTasks);
+        } else {
+            console.log(`Se ha encontrado más de una terea relacionadas a la búsqueda "${query}".`);
+            console.table(foundTasks);
+        }
+    }
 }
 
 module.exports = tasks;
+
+// JSON Functions
 
 function readJSON(path) {
     try {
@@ -51,6 +67,8 @@ function writeJSON(content) {
     }
 }
 
+// TASK Functions
+
 function searchTask(query, by) {
     switch (by) {
         case "titulo":
@@ -61,6 +79,17 @@ function searchTask(query, by) {
             return;
     }
 }
+
+function deleteTask(task) {
+    let allTheTasks = readJSON(jsonPath);
+    let tasksWithoutDeletedOne = allTheTasks.filter(({ titulo }) => titulo !== task[0].titulo);
+    writeJSON(tasksWithoutDeletedOne);
+
+    console.log(`Se ha eliminado la tarea:`);
+    console.table(task);
+}
+
+// INPUT/OUTPUT Functions
 
 function capitalize(input) {
     const formattedInput =

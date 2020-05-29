@@ -29,7 +29,7 @@ switch (formattedAction) {
             : console.log(`Debe ingresar un valor para realizar la búsqueda.`);
         break;
     case "BORRAR":
-        tasks.delete;   //TODO
+        tasks.delete(firstValue);
         break;
     case undefined:
         console.log(`Debe ingresar una acción para ejecutar el programa.`);
@@ -50,7 +50,7 @@ function formatStatus(status) {
         case "ENPROGRESO":
             return "EN PROGRESO";
         default:
-            console.log(`"${status}" no corresponde con ningún valor válido. La tarea fue guardada con estado "PENDIENTE"`);
+            console.log(`"${status}" no corresponde con ningún valor válido. La tarea fue guardada con Estado: "PENDIENTE"`);
             return "PENDIENTE";
     }
 }
